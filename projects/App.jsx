@@ -16,9 +16,9 @@ const Menu = () => (
     <div>
         <h1>Menu</h1>
         <nav>
-            <Link to="../menu/food">Food</Link>
-            <Link to="../menu/drinks">Drinks</Link>
-            <Link to="../menu/sides">Sides</Link>
+            <Link to="../menu/food"> Food </Link>
+            <Link to="../menu/drinks"> Drinks </Link>
+            <Link to="../menu/sides"> Sides </Link>
         </nav>
     </div>
 )
