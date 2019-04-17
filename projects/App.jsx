@@ -1,38 +1,38 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import './App.css';
+import React from "react";
+import { Link } from 'react-router-dom'
+import "./App.css";
+const profile = ({match, loading})=>{
+    if(loading) return <div>정보 불러오는 중 </div>
+    return <div>프로필 정보 : {match.params.profile}</div>
+}
+class App extends React.Component {
 
-
-const Links = () => (
-    <nav>
-        <Link to="/">Home</Link>
-        <Link to="/menu">Menu</Link>
-    </nav>
-)
-
-const Home = () => <h1>Home</h1>;
-const Menu = () => (
-    <div>
-        <h1>Menu</h1>
-        <nav>
-            <Link to="../menu/food"> Food </Link>
-            <Link to="../menu/drinks"> Drinks </Link>
-            <Link to="../menu/sides"> Sides </Link>
-        </nav>
-    </div>
-)
-const App = () => (
-    <Router>
-        <Links />
-        <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/menu" component={Menu} />
-        </Switch>
-    </Router>
-)
-
-ReactDOM.render(<App />, document.getElementById('root'));
-
-
-
+}
+render() {
+    return (
+        <div>
+            <div className="links">
+                <Link to="/profile" className="link">
+                    Home
+                  </Link>
+                <Link to="/profile/1" className="link">
+                    profile1
+                </Link>
+                <Link to="/profile/2" className="link">
+                    profile2
+                 </Link>
+            </div>
+            <div className="tabs">
+            <switch>
+                <Route path="/profile" exact  Component={SelectProfile}/>
+                <Route 
+                    path ="/profile/:profileId"
+                    render={(props)=>{
+                        return <Profile {...props} loading={this.state.loading}/>
+                    }}
+                     ></Route>
+                </switch>
+            </div>
+        </div>
+    )
+}
